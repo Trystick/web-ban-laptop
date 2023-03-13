@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   List,
   Datagrid,
@@ -8,7 +9,6 @@ import {
   TextInput,
   Create,
 } from 'react-admin'
-
 export const listProducts = (props) => (
   <List {...props}>
     <Datagrid>

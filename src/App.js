@@ -1,6 +1,6 @@
 import { Admin, Resource } from 'react-admin'
 import simpleRestProvider from 'ra-data-simple-rest'
-
+import React from 'react'
 import { listProducts, editProduct, createProduct } from './components/Products'
 import { listUsers, editUser, createUser } from './components/Users'
 import AdminPanel from './components/AdminPanel'
