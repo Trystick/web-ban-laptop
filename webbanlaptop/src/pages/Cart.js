@@ -104,7 +104,7 @@ function Cart() {
         <table>
           <thead>
             <tr>
-              <th>Sản phẩn</th>
+              <th>Sản phẩm</th>
               <th>Số lượng</th>
               <th>Thành tiền</th>
               <th></th>
@@ -113,27 +113,6 @@ function Cart() {
           <tbody>
             <tr class="odd">
               <td className="product-detail">
-                  <img
-                    src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg"
-                    alt=""
-                    class="itemImg"
-                  />
-                <p class="itemNumber">#QUE-007544-002</p>
-                <h3>Item Name 1</h3>
-                <p class="stockStatus">In Stock</p>
-              </td>
-              <td>
-                <input type="text" class="qty" placeholder="3" />
-              </td>
-              <td>$15.00</td>
-              <td>
-                <button href="#" class="remove">
-                  x
-                </button>
-              </td>
-            </tr>
-            <tr class="even">
-              <td className="product-detail">
                 <img
                   src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg"
                   alt=""
@@ -141,7 +120,6 @@ function Cart() {
                 />
                 <p class="itemNumber">#QUE-007544-002</p>
                 <h3>Item Name 1</h3>
-                <p class="stockStatus">In Stock</p>
               </td>
               <td>
                 <input type="text" class="qty" placeholder="3" />
@@ -182,7 +160,10 @@ function Cart() {
               <span className="label">Tổng cộng</span>
               <span className="value">$44.00</span>
             </li>
-            <li className="totalRow" style={{ padding: "0", marginBottom: "50px"}}>
+            <li
+              className="totalRow"
+              style={{ padding: "0", marginBottom: "50px" }}
+            >
               <a href="http:\\example.com" className="btn-icon continue">
                 Thanh toán
               </a>
