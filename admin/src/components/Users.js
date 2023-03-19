@@ -3,12 +3,12 @@ import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Creat
 export const listUsers = (props) => (
     <List {...props}>
         <Datagrid >
-            <TextField source="tenKhachHang"></TextField>
-            <TextField source="soDienThoai"></TextField>
-            <TextField source="email"></TextField>
-            <TextField source="diaChi"></TextField>
-            <TextField source="username"></TextField>
-            <TextField source="xepLoai"></TextField>
+            <TextField source="tenKhachHang" label="Tên khác hàng"></TextField>
+            <TextField source="soDienThoai" label="SĐT"></TextField>
+            <TextField source="email" label="Email liên hệ"></TextField>
+            <TextField source="diaChi" label="Địa chỉ"></TextField>
+            <TextField source="username" label="Tải khoản"></TextField>
+            <TextField source="xepLoai" label="Xếp loại"></TextField>
 
             <EditButton basePath='/users'></EditButton>
         </Datagrid>

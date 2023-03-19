@@ -152,5 +152,22 @@
         }
       ]
     }
-  ]
+  ],
+  "orders":[
+    {
+        "id": 1,
+        "orderDate": "2023-02-27T13:55:02.000+00:00",
+        "customerId": 7,
+        "requiredDate": null,
+        "shippedDate": null,
+        "comment": "hãy giao cho tôi sớm sớm nhé",
+        "status": 1,
+        "address": "1/7 Nguyễn Văn Yến",
+        "provinceId": 1,
+        "districtId": 23,
+        "wardId": 313,
+        "phoneNumber": "0369173417",
+        "totalOrder": 365000.00
+    }
+]
 }

@@ -5,6 +5,8 @@ import {listProducts, editProduct, createProduct} from './components/Products'
 
 import {listUsers, editUser, createUser} from './components/Users'
 
+import {listOrders } from './components/Orders'
+
 
 function App() {
   return (
@@ -24,6 +26,10 @@ function App() {
         edit={editUser}
         create={createUser} >
 
+        </Resource>
+        <Resource
+        name='orders'
+        list={listOrders}>
         </Resource>
       </Admin>
     </div>

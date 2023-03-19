@@ -1,19 +1,18 @@
-import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create } from "react-admin";
+import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, Button} from "react-admin";
 
 export const listProducts = (props) => (
-    console.log(props),
     <List {...props}>
         <Datagrid>
-            <TextField source="tenSanPham"></TextField>
-            <TextField source="thongSoSanPham"></TextField>
-            <TextField source="thongSoKyThuat"></TextField>
-            <TextField source="soluong"></TextField>
-            <TextField source="baoHanh"></TextField>
-            <TextField source="giaTien"></TextField>
-            <TextField source="phanTramKhuyenMai"></TextField>
-            <TextField source="khuyenMai"></TextField>
-            <TextField source="moTa"></TextField>
-            <TextField source="hangSX"></TextField>
+            <TextField width="20%" source="tenSanPham" label="Tên sản phẩm"></TextField>
+            <TextField source="thongSoSanPham" label="Thông số sản phẩm"></TextField>
+            <TextField source="thongSoKyThuat" label="Thông số kỹ thuật"></TextField>
+            <TextField source="soluong" label="Số lượng"></TextField>
+            <TextField source="baoHanh" label="Thời gian bảo hành"></TextField>
+            <TextField source="giaTien" label="Giá tiền"></TextField>
+            <TextField source="phanTramKhuyenMai" label="Phần trăm khuyến mãi"></TextField>
+            <TextField source="khuyenMai" label="Khuyến mãi"></TextField>
+            <TextField source="moTa" label="Mô tả"></TextField>
+            <TextField source="hangSX" label="Hãng sản xuất"></TextField>
             <EditButton basePath='/products'></EditButton>
         </Datagrid>
     </List>
