@@ -17,7 +17,6 @@ function App() {
         edit={editProduct}
         create={createProduct}
         >
-
         </Resource>
         <Resource
         name='users'
@@ -34,5 +33,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

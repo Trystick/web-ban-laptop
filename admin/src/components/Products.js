@@ -1,12 +1,13 @@
-import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, SearchInput} from "react-admin";
+import { Datagrid, TextField, Edit, SimpleForm, EditButton, TextInput, Create, List } from 'react-admin';
+
+import React from "react";
 
 const postFilters = [
-    <SearchInput source="tenSanPham" alwaysOn />,
-    <TextInput label="Tên sản phẩm" source="tenSanPham" defaultValue="..." />,
+    <TextInput label="Search" source="q" alwaysOn />
 ];
 
 export const listProducts = (props) => (
-    <List filters={postFilters} {...props} >
+    <List {...props} filters={postFilters} >
         <Datagrid>
             <TextField width="20%" source="tenSanPham" label="Tên sản phẩm"></TextField>
             <TextField source="thongSoSanPham" label="Thông số sản phẩm"></TextField>
