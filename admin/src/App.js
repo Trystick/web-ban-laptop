@@ -7,7 +7,6 @@ import {listUsers, editUser, createUser} from './components/Users'
 
 import {listOrders } from './components/Orders'
 
-
 function App() {
   return (
     <div className="App">

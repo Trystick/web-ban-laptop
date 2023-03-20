@@ -1,7 +1,12 @@
-import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, Button} from "react-admin";
+import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, SearchInput} from "react-admin";
+
+const postFilters = [
+    <SearchInput source="tenSanPham" alwaysOn />,
+    <TextInput label="Tên sản phẩm" source="tenSanPham" defaultValue="..." />,
+];
 
 export const listProducts = (props) => (
-    <List {...props}>
+    <List filters={postFilters} {...props} >
         <Datagrid>
             <TextField width="20%" source="tenSanPham" label="Tên sản phẩm"></TextField>
             <TextField source="thongSoSanPham" label="Thông số sản phẩm"></TextField>
@@ -21,16 +26,16 @@ export const listProducts = (props) => (
 export const editProduct =(props)=> (
     <Edit{...props}>
         <SimpleForm>
-            <TextInput source="tenSanPham"></TextInput>
-            <TextInput source="thongSoSanPham"></TextInput>
-            <TextInput source="thongSoKyThuat"></TextInput>
-            <TextInput source="soluong"></TextInput>
-            <TextInput source="baoHanh"></TextInput>
-            <TextInput source="giaTien"></TextInput>
-            <TextInput source="phanTramKhuyenMai"></TextInput>
-            <TextInput source="khuyenMai"></TextInput>
-            <TextInput source="moTa"></TextInput>
-            <TextInput source="hangSX"></TextInput>
+            <TextInput width="20%" source="tenSanPham" label="Tên sản phẩm"></TextInput>
+            <TextInput source="thongSoSanPham" label="Thông số sản phẩm"></TextInput>
+            <TextInput source="thongSoKyThuat" label="Thông số kỹ thuật"></TextInput>
+            <TextInput source="soluong" label="Số lượng"></TextInput>
+            <TextInput source="baoHanh" label="Thời gian bảo hành"></TextInput>
+            <TextInput source="giaTien" label="Giá tiền"></TextInput>
+            <TextInput source="phanTramKhuyenMai" label="Phần trăm khuyến mãi"></TextInput>
+            <TextInput source="khuyenMai" label="Khuyến mãi"></TextInput>
+            <TextInput source="moTa" label="Mô tả"></TextInput>
+            <TextInput source="hangSX" label="Hãng sản xuất"></TextInput>
         </SimpleForm>
     </Edit>
 )
@@ -38,16 +43,16 @@ export const editProduct =(props)=> (
 export const createProduct =(props)=> (
     <Create{...props}>
         <SimpleForm>
-            <TextInput source="tenSanPham"></TextInput>
-            <TextInput source="thongSoSanPham"></TextInput>
-            <TextInput source="thongSoKyThuat"></TextInput>
-            <TextInput source="soluong"></TextInput>
-            <TextInput source="baoHanh"></TextInput>
-            <TextInput source="giaTien"></TextInput>
-            <TextInput source="phanTramKhuyenMai"></TextInput>
-            <TextInput source="khuyenMai"></TextInput>
-            <TextInput source="moTa"></TextInput>
-            <TextInput source="hangSX"></TextInput>
+            <TextInput width="20%" source="tenSanPham" label="Tên sản phẩm"></TextInput>
+            <TextInput source="thongSoSanPham" label="Thông số sản phẩm"></TextInput>
+            <TextInput source="thongSoKyThuat" label="Thông số kỹ thuật"></TextInput>
+            <TextInput source="soluong" label="Số lượng"></TextInput>
+            <TextInput source="baoHanh" label="Thời gian bảo hành"></TextInput>
+            <TextInput source="giaTien" label="Giá tiền"></TextInput>
+            <TextInput source="phanTramKhuyenMai" label="Phần trăm khuyến mãi"></TextInput>
+            <TextInput source="khuyenMai" label="Khuyến mãi"></TextInput>
+            <TextInput source="moTa" label="Mô tả"></TextInput>
+            <TextInput source="hangSX" label="Hãng sản xuất"></TextInput>
         </SimpleForm>
     </Create>
 )

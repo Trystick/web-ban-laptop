@@ -18,13 +18,13 @@ export const listUsers = (props) => (
 export const editUser =(props)=> (
     <Edit{...props}>
         <SimpleForm>
-            <TextInput source="tenKhachHang" ></TextInput>
-            <TextInput source="soDienThoai"></TextInput>
-            <TextInput source="email" type="email"></TextInput>
-            <TextInput source="diaChi"></TextInput>
-            <TextInput source="username"></TextInput>
+            <TextInput source="tenKhachHang" label="Tên khác hàng"></TextInput>
+            <TextInput source="soDienThoai" label="SĐT"></TextInput>
+            <TextInput source="email" label="Email liên hệ"></TextInput>
+            <TextInput source="diaChi" label="Địa chỉ"></TextInput>
+            <TextInput source="username" label="Tải khoản"></TextInput>
             <TextInput source="password"></TextInput>
-            <TextInput source="xepLoai"></TextInput>
+            <TextInput source="xepLoai" label="Xếp loại"></TextInput>
         </SimpleForm>
     </Edit>
 )
@@ -32,13 +32,13 @@ export const editUser =(props)=> (
 export const createUser =(props)=> (
     <Create{...props}>
         <SimpleForm>
-            <TextInput source="tenKhachHang"></TextInput>
-            <TextInput source="soDienThoai"></TextInput>
-            <TextInput source="email" type="email"></TextInput>
-            <TextInput source="diaChi"></TextInput>
-            <TextInput source="username"></TextInput>
+            <TextInput source="tenKhachHang" label="Tên khác hàng"></TextInput>
+            <TextInput source="soDienThoai" label="SĐT"></TextInput>
+            <TextInput source="email" label="Email liên hệ"></TextInput>
+            <TextInput source="diaChi" label="Địa chỉ"></TextInput>
+            <TextInput source="username" label="Tải khoản"></TextInput>
             <TextInput source="password"></TextInput>
-            <TextInput source="xepLoai"></TextInput>
+            <TextInput source="xepLoai" label="Xếp loại"></TextInput>
         </SimpleForm>
     </Create>
 )
