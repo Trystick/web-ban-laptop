@@ -55,8 +55,8 @@ public class ProductService {
         return saveProduct;
     }
 
-    public Product updateProduct(Product product, String url){
-        Product resultProduct = gProductRepository.findProductByUrl(url);
+    public Product updateProduct(Product product, int id){
+        Product resultProduct = gProductRepository.findProductById(id);
         if(resultProduct != null){
             Product newProduct = resultProduct;
             newProduct.setTenSanPham(product.getTenSanPham());
@@ -79,8 +79,8 @@ public class ProductService {
             return null;
         }
     }
-    public Product deleteProduct(String url){
-        Product product = gProductRepository.findProductByUrl(url);
+    public Product deleteProduct(int id){
+        Product product = gProductRepository.findProductById(id);
         if(product!=null){
             product.setActivated(0);
             return gProductRepository.save(product);

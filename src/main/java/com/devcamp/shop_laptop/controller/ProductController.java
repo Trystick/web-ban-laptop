@@ -56,22 +56,22 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/product/{url}")
+    @PutMapping("/product/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public ResponseEntity<Object> updateProductByUrl(@Valid @RequestBody Product product, @PathVariable("url") String url){
+    public ResponseEntity<Object> updateProductByUrl(@Valid @RequestBody Product product, @PathVariable("id") int id){
         try {
-            Product saveProduct = gProductService.updateProduct(product, url);
+            Product saveProduct = gProductService.updateProduct(product, id);
             return new ResponseEntity<>(saveProduct, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.unprocessableEntity()
                     .body("Failed to Update specified Product: " + e.getCause().getCause().getMessage());
         }
     }
-    @PutMapping("/product/{url}/delete")
+    @PutMapping("/product/{id}/delete")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public ResponseEntity<Object> deleteProductByUrl(@PathVariable("url") String url){
+    public ResponseEntity<Object> deleteProductByUrl(@PathVariable("id") int id){
         try {
-            Product saveProduct = gProductService.deleteProduct(url);
+            Product saveProduct = gProductService.deleteProduct(id);
             return new ResponseEntity<>(saveProduct, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.unprocessableEntity()
