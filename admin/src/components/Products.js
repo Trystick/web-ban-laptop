@@ -58,8 +58,8 @@ export const createProduct =(props)=> (
     <Create{...props}>
     
         <SimpleForm>
-           <ImageInput source="pictures" placeholder={<p>Drop your file here</p>} label="Related pictures" accept="image/*">
-    <ImageField source="src" title="title" />
+           <ImageInput type="file" source="pictures" placeholder={<p>Drop your file here</p>} label="Related pictures" accept="image/*">
+    <ImageField source="src" title="title"  />
 </ImageInput>
            <TextInput source="id"  ></TextInput>
             <TextInput source="tenSanPham" required="true"></TextInput>

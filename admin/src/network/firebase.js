@@ -3,6 +3,10 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+import {  ref,
+      uploadBytesResumable,
+      getDownloadURL ,getStorage, uploadBytes } from "firebase/storage";
+import { Form } from "react-admin";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,15 +22,39 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+//const storage = getStorage(app);
 
 const analytics = getAnalytics(app);
-import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-const storageRef = ref(storage, 'some-child');
-
-const bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
-uploadBytes(storageRef, bytes).then((snapshot) => {
-  console.log('Uploaded an array!');
-});
-
+const storage = getStorage();
+// 'file' comes from the Blob or File API
+export async function handleUpload(file, fileName) {
+      const storageRef = ref(storage,`pic/${fileName}`)
+      var url1='';
+      const uploadTask = await uploadBytesResumable(storageRef, file).then((snapshot)=>{
+     getDownloadURL(snapshot.ref).then((url) => {
+                      console.log(url);
+                      url1 = url;
+                      return url;
+                  });
+  })
+  //     uploadTask.on(
+  //         "state_changed",
+  //         (snapshot) => {
+  //             const percent = Math.round(
+  //                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+  //             );
+  //  
+  //             // update progress
+  //            
+  //         },
+  //         (err) => console.log(err),
+  //         () => {
+  //             // download url
+  //             getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+  //                 console.log(url);
+  //                 url1 = url
+  //             });
+  //         }
+  //     ); 
+  }
