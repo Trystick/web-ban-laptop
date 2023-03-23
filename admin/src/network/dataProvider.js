@@ -1,21 +1,11 @@
 import axios from 'axios';
-import { fetchUtils } from 'react-admin'
 import {handleUpload} from './firebase';
-
-const httpClient = (url, options = {}) => {
-    if (!options.headers) {
-        options.headers = new Headers({ Accept: 'application/json' });
-    }
-    const { token } = JSON.parse(localStorage.getItem('token'));
-    options.headers.set('Content-Type', 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin", "*", 'Authorization', 'Access-Control-Expose-Headers', 'X-Total-Count', `Token ${token}`);
-    return fetchUtils.fetchJson(url, options);
-};
 const token = localStorage.getItem('token');
 const headers = {
     "Access-Control-Allow-Origin": "*",
     'Content-Type': 'application/json',
     "Authorization": `Token ${token}`,
+    
 }
 
 let apiUrl = 'web-laptopp.herokuapp.com';
@@ -49,44 +39,66 @@ const dataProvider1 = {
         
 
         let p;
-        console.log(JSON.stringify(params.data));
+        //console.log(JSON.stringify(params.data));
         let json = JSON.stringify(params.data);
         var result = [];
         
         
         result = JSON.parse(json);
 
-        var pic = result["pictures"]["src"];
-        var namePic = result["pictures"]["title"]
-        console.log(pic);
-        console.log(namePic);
-        delete result["pictures"];
-
-        console.log(JSON.stringify(result,namePic));
-        
-        let blob = await fetch(pic).then(r => r.blob());
-        
-
-        var a=await  handleUpload(blob,namePic);
-        await a;
-        var b = await setTimeout(() => {  console.log("World!"); }, 5000);
-            result["hinhanh"]=`${await a}`;
-            console.log(result);
-        console.log(a);
-        
        
-
        
+        
+        console.log(result)
 
-        // await axios.post(`https://${apiUrl}/${resource}`, result, { headers }).then(response => {
-        //     console.log(response);
-        //     p = response
-        // })
-        // if (p.status == 201) {
-        //     return params;
-        // }
-        // else
-        //     return p
+        //console.log(JSON.stringify(result,namePic));
+        
+        let a ;
+        var i=0;
+        async function pic(){
+            var  picLink =[];
+            var i=0;
+           await result["pictures"].forEach(async element => {
+                let blob = await fetch(element["src"]).then(r => r.blob())
+                //await result["hinhanh"][{"hinhanh": await handleUpload(blob,element["title"])}]
+                await handleUpload(blob,element["title"]).then((v)=>{
+                    picLink.push({"hinhanh":v})
+                    console.log(picLink)
+                    result["hinhanh"] = picLink
+                    console.log(result)
+                    i++;
+                    
+                })
+                if(i==result["pictures"].indexOf(element))
+                    return result
+
+            })
+            return result
+           
+        }
+        
+        const something = await pic();
+        console.log(something);
+        setTimeout(async () => {
+            delete result["pictures"]
+            console.log(JSON.stringify(result))
+            await axios.post(`https://${apiUrl}/${resource}`, JSON.stringify(result), { headers }).then(response => {
+            console.log(response);
+            p = response
+        })
+        if (p.status == 201) {
+            return params;
+        }
+        else
+            return p
+
+        }, 10000);
+       
+        
+        
+        
+
+        
     },
     update: async (resource, params) => {
         let p;
@@ -94,7 +106,7 @@ const dataProvider1 = {
         console.log(JSON.stringify(params.data));
         let json = JSON.stringify(params.data);
         console.log(json);
-        await axios.post(`https://${apiUrl}/${resource}/${params.data["id"]}`, json, { headers },).then(response => {
+        await axios.put(`https://${apiUrl}/${resource}/${params.data["id"]}`, json, { headers },).then(response => {
             console.log(response);
             p = response
         })
@@ -110,7 +122,7 @@ const dataProvider1 = {
         console.log(params);
         let json = JSON.stringify(params.data);
         console.log(json);
-        await axios.post(`https://${apiUrl}/${resource}/${params["url"]}/delete`, { headers }).then(response => {
+        await axios.put(`http://${apiUrl}/${resource}/${params["id"]}/delete`,null, { headers }).then(response => {
             console.log(response);
             p = response
         })

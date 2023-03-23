@@ -1,4 +1,4 @@
-import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create } from 'react-admin';
+import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, DeleteButton } from 'react-admin';
 
 export const listUsers = (props) => (
     <List {...props}>
@@ -10,7 +10,8 @@ export const listUsers = (props) => (
             <TextField source="username" label="Tải khoản"></TextField>
             <TextField source="xepLoai" label="Xếp loại"></TextField>
 
-            <EditButton basePath='/users'></EditButton>
+            <EditButton basePath='/user'></EditButton>
+            <DeleteButton basePath='/user'></DeleteButton>
         </Datagrid>
     </List>
 )

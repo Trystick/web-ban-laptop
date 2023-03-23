@@ -4,7 +4,7 @@ import{Admin, Resource } from 'react-admin'
 import {listProducts, editProduct, createProduct} from './components/Products'
 import {listUsers, editUser, createUser} from './components/Users'
 
-import {listOrders } from './components/Orders'
+import {CustomerList, listOrders } from './components/Orders'
 import React from 'react';
 import axios from 'axios';
 
@@ -24,7 +24,6 @@ function App() {
         edit={editProduct}
         hasEdit={true}
         create={createProduct}
-        
         >
            </Resource>
         <Resource
@@ -36,11 +35,9 @@ function App() {
         </Resource>
         <Resource
         name='order'
-        list={listOrders}>
+        list={listOrders}
+        edit={CustomerList}>
         </Resource>
-        
-       
-       
       </Admin>
       <Admin>
       

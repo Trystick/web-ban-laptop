@@ -30,14 +30,14 @@ const storage = getStorage();
 // 'file' comes from the Blob or File API
 export async function handleUpload(file, fileName) {
       const storageRef = ref(storage,`pic/${fileName}`)
-      var url1='';
-      const uploadTask = await uploadBytesResumable(storageRef, file).then((snapshot)=>{
-     getDownloadURL(snapshot.ref).then((url) => {
-                      console.log(url);
-                      url1 = url;
+  var a ;
+      const uploadTask = await uploadBytesResumable(storageRef, file).then( async (snapshot)=>{
+      a = await getDownloadURL(snapshot.ref).then((url) => {
                       return url;
                   });
   })
+  return a;
+}
   //     uploadTask.on(
   //         "state_changed",
   //         (snapshot) => {
@@ -57,4 +57,4 @@ export async function handleUpload(file, fileName) {
   //             });
   //         }
   //     ); 
-  }
+  
