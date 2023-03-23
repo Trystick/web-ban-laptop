@@ -26,19 +26,11 @@ public class JsonRequestController {
     @Autowired
     private ProductRepository gProductRepository;
     @PostMapping("/uploadFile")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("productId") int productid){
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+    public ResponseEntity<String> handleFileUpload(String hinhAnh, int productid){
         hinhAnh anh = new hinhAnh();
-        anh.setHinhanh(fileName);
+        anh.setHinhanh(hinhAnh);
         anh.setProduct(gProductRepository.findProductById(productid));
         hinhAnh save = gAnhRepository.save(anh);
-        String uploadDir = "/image";
-        try {
-            FileUploadUtil.saveFile(uploadDir, fileName, file);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         return ResponseEntity.ok().body("file received successfully");
     }
     @PostMapping("/uploadJson")

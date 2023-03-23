@@ -47,9 +47,12 @@ public class ProductController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Object> createProduct(@Valid @RequestBody Product product){
         try {
-            Product saveProduct = new Product();
-            saveProduct = gProductService.taoSanPham(product);
-            return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
+            Product saveProduct = gProductService.taoSanPham(product);
+            if(saveProduct  != null) {
+                return new ResponseEntity<>("Bạn Đã Tạo Thành Công, Mã Sản Phẩm là: " + saveProduct.getId(), HttpStatus.CREATED);
+            }else{
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
         } catch (Exception e) {
             return ResponseEntity.unprocessableEntity()
                     .body("Failed to Create specified Product: " + e.getCause().getCause().getMessage());

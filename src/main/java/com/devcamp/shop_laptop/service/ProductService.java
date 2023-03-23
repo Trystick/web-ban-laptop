@@ -6,13 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.devcamp.shop_laptop.controller.JsonRequestController;
 import com.devcamp.shop_laptop.model.Product;
+import com.devcamp.shop_laptop.model.hinhAnh;
 import com.devcamp.shop_laptop.repository.ProductRepository;
 
 @Service
 public class ProductService {
     @Autowired
     private ProductRepository gProductRepository;
+
+    @Autowired
+    private JsonRequestController gJsonRequestController;
 
     public List<Product> findAllProduct() {
         List<Product> lstProduct = new ArrayList<Product>();
@@ -52,6 +57,9 @@ public class ProductService {
         newProduct.setCreateDate(new Date());
         newProduct.setHangSX(product.getHangSX());
         Product saveProduct = gProductRepository.save(newProduct);
+        for(hinhAnh hinhAnh : product.getHinhanh()){
+            gJsonRequestController.handleFileUpload(hinhAnh.getHinhanh(), saveProduct.getId());
+        }
         return saveProduct;
     }
 
