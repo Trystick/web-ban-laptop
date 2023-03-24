@@ -89,8 +89,6 @@ const dataProvider1 = {
                         i++;
                         
                     })
-                    
-    
                 })
                  setTimeout(async () => {
                     delete result["pictures"]
