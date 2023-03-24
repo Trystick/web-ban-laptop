@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+.brand{
+    text-align: center;
+    background-color: rgb(202, 200, 200);
+}
+.brand article{
+    width:12.5%;
+    float:left;
+    padding:1em;
+    text-align: center;
+    position: relative;
+    background-color: rgb(202, 200, 200);
+}
+
+.brandpk{
+    text-align: center;
+    background-color: rgb(202, 200, 200);
+}
+.brandpk article{
+    width:14%;
+    float:left;
+    /*border: 1px solid black;*/
+    padding:1em;
+    text-align: center;
+    position: relative;
+    background-color: rgb(202, 200, 200);
+}
+
+.button{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+.button li{
+    display:inline-block;
+	position: relative;
+}
+.button li a{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    padding:10px 1px;
+	font-family: "Segoe UI", "DejaVu Sans", "Trebuchet MS", "sans-serif";
+}
+.button li a:hover{
+    background-color: #F1F1F1;
+	text-decoration: none;
+	color: black;
+}
+
+.cost{
+    text-align: center;
+    background-color: rgb(202, 200, 200);
+}
+.cost article{
+    width:20%;
+    float:left;
+    padding:1em;
+    text-align: center;
+    position: relative;
+    background-color: rgb(202, 200, 200);
+}
+.cost a{
+    cursor: pointer;
+    text-decoration: none;
+    color: blue;
+}
+.cost a:hover{
+    color: red;
+}
+
+.button-num{
+    border: 2px solid gray;
+    background-color: gray;
+    color: black;
+    border-radius: 0.25rem;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+}
+.button-num:hover{
+    border: 2px solid black;
+    background-color: #000;
+    color: #f0f0f0;
+}
+
+.button_num{
+	text-align: center;
+}
+.button_num ul{
+    margin:0;
+    padding-bottom: 20px;
+    list-style-type:none;
+}
+.button_num li{
+    display:inline-block;
+	position: relative;
+}
+
+.nutphantrang{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 650px;
+    margin-right: 650px;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: rgba(216, 73, 73, 0.2); */
+    width: 100%;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  
+  .pagination-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: 40px;
+    width: 40px;
+    text-decoration: none;
+    transition: background-color .2s;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    
+  }
+  
+  .pagination-container a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #7cbddb;
+  }
+  
+  .pagination-container a.disabled { 
+    opacity: 0.2;
+  }
+  .pagination-container a:hover:not(.active) {background-color: rgb(238, 238, 238);}
