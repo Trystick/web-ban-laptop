@@ -16,9 +16,10 @@ const dataProvider1 = {
         ],
     }),
     getOne: async (resource, params) => {
-        console.log(params["id"])
+       
         const rawSummary = (await axios.get(`https://${apiUrl}/${resource}/${params["id"]}`, { headers })).data;
-        console.log(rawSummary)
+       
+        console.log(rawSummary.hinhanh)
         return {
             data: rawSummary,
             total: rawSummary.length
@@ -58,42 +59,63 @@ const dataProvider1 = {
         async function pic(){
             var  picLink =[];
             var i=0;
-           await result["pictures"].forEach(async element => {
-                let blob = await fetch(element["src"]).then(r => r.blob())
-                //await result["hinhanh"][{"hinhanh": await handleUpload(blob,element["title"])}]
-                await handleUpload(blob,element["title"]).then((v)=>{
-                    picLink.push({"hinhanh":v})
-                    console.log(picLink)
-                    result["hinhanh"] = picLink
-                    console.log(result)
-                    i++;
+            if(result["password"]!=null)
+            {
+                console.log(JSON.stringify(result));
+                await axios.post(`https://${apiUrl}/customer/register`, JSON.stringify(result), { headers }).then(response => {
                     
+                    p = response
                 })
-                if(i==result["pictures"].indexOf(element))
-                    return result
-
-            })
+                if (p.status == 201) {
+                    
+                    return params;
+                }else
+                    return p
+            }
+            else if (result["pictures"]==null)
+            {
+                throw new Error("Pictures Required");
+                
+            }else
+            {
+                await result["pictures"].forEach(async element => {
+                    let blob = await fetch(element["src"]).then(r => r.blob())
+                    //await result["hinhanh"][{"hinhanh": await handleUpload(blob,element["title"])}]
+                    await handleUpload(blob,element["title"]).then((v)=>{
+                        picLink.push({"hinhanh":v})
+                        console.log(picLink)
+                        result["hinhanh"] = picLink
+                        console.log(result)
+                        i++;
+                        
+                    })
+                    
+    
+                })
+                 setTimeout(async () => {
+                    delete result["pictures"]
+                    console.log(JSON.stringify(result))
+                    await axios.post(`https://${apiUrl}/${resource}`, JSON.stringify(result), { headers }).then(response => {
+                    console.log(response);
+                    p = response
+                })
+                if (p.status == 201) {
+                    
+                    return params;
+                }else
+                    return p
+        
+                }, 5000) 
+            }
+           
             return result
            
         }
         
         const something = await pic();
         console.log(something);
-        setTimeout(async () => {
-            delete result["pictures"]
-            console.log(JSON.stringify(result))
-            await axios.post(`https://${apiUrl}/${resource}`, JSON.stringify(result), { headers }).then(response => {
-            console.log(response);
-            p = response
-        })
-        if (p.status == 201) {
-            return params;
-        }
-        else
-            return p
-
-        }, 10000);
        
+        return { data: { id: 1, }, };
         
         
         
@@ -102,7 +124,7 @@ const dataProvider1 = {
     },
     update: async (resource, params) => {
         let p;
-        console.log(params.data["id"]);
+        console.log(params);
         console.log(JSON.stringify(params.data));
         let json = JSON.stringify(params.data);
         console.log(json);
@@ -143,7 +165,7 @@ const dataProvider1 = {
 
     }
 };
-export { dataProvider1 };
+export { dataProvider1  };
 
 
 

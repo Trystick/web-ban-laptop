@@ -26,8 +26,10 @@ export const listProducts = (props) => (
 )
 
 export const editProduct =(props)=> (
+    console.log(props),
     <Edit{...props}>
         <SimpleForm>
+            
             <TextInput width="20%" source="tenSanPham" label="Tên sản phẩm"></TextInput>
             <TextInput source="url" label="URL"></TextInput>
             <TextInput source="category" label="Danh mục"></TextInput>
@@ -48,13 +50,13 @@ export const editProduct =(props)=> (
 export const createProduct =(props)=> (
     <Create{...props}>
         <SimpleForm>
-            <ImageInput source="pictures" multiple="true" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
-    <ImageField source="src" title="title" />
+            <ImageInput source="pictures" required="true"  multiple="true" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
+    <ImageField source="src"  required="true" retitle="title" />
 </ImageInput>
-            <TextInput width="20%" source="tenSanPham" label="Tên sản phẩm"></TextInput>
-            <TextInput source="url" label="URL"></TextInput>
-            <TextInput source="category" label="Danh mục"></TextInput>
-            <TextInput source="soluong" label="Số lượng"></TextInput>
+            <TextInput width="20%" source="tenSanPham" required={1} label="Tên sản phẩm"></TextInput>
+            <TextInput source="url" required={1} label="URL"></TextInput>
+            <TextInput source="category" required={1} label="Danh mục"></TextInput>
+            <TextInput source="soluong" required={1} label="Số lượng"></TextInput>
             <TextInput source="thongSoSanPham" label="Thông số sản phẩm"></TextInput>
             <TextInput source="thongSoKyThuat" label="Thông số kỹ thuật"></TextInput>
             <TextInput source="baoHanh" label="Thời gian bảo hành"></TextInput>
@@ -62,7 +64,7 @@ export const createProduct =(props)=> (
             <TextInput source="phanTramKhuyenMai" label="Phần trăm khuyến mãi"></TextInput>
             <TextInput source="khuyenMai" label="Khuyến mãi"></TextInput>
             <TextInput source="moTa" label="Mô tả"></TextInput>
-            <TextInput source="activated" label="Kích hoạt"></TextInput>
+            <TextInput source="activated" defaultValue={1} label="Kích hoạt"></TextInput>
             <TextInput source="hangSX" label="Hãng sản xuất"></TextInput>
         </SimpleForm>
     </Create>

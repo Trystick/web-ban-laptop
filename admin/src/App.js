@@ -36,7 +36,7 @@ function App() {
         <Resource
         name='order'
         list={listOrders}
-        edit={CustomerList}>
+       >
         </Resource>
       </Admin>
       <Admin>
