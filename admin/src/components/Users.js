@@ -1,4 +1,4 @@
-import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, Create, DeleteButton } from 'react-admin';
+import { List,Datagrid, TextField, Edit, SimpleForm,EditButton, TextInput, DeleteButton } from 'react-admin';
 
 export const listUsers = (props) => (
     <List {...props}>
@@ -28,18 +28,4 @@ export const editUser =(props)=> (
             <TextInput source="xepLoai" label="Xếp loại"></TextInput>
         </SimpleForm>
     </Edit>
-)
-
-export const createUser =(props)=> (
-    <Create{...props}>
-        <SimpleForm>
-            <TextInput source="tenKhachHang" label="Tên khác hàng"></TextInput>
-            <TextInput source="soDienThoai" label="SĐT"></TextInput>
-            <TextInput source="email" label="Email liên hệ"></TextInput>
-            <TextInput source="diaChi" label="Địa chỉ"></TextInput>
-            <TextInput source="username" label="Tải khoản"></TextInput>
-            <TextInput source="password"></TextInput>
-            <TextInput source="xepLoai" label="Xếp loại"></TextInput>
-        </SimpleForm>
-    </Create>
 )
